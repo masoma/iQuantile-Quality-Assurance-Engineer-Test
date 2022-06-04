@@ -1,0 +1,39 @@
+
+package javaapplication1;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class AddPeople {
+    
+    public static void main(String[] args) {
+       System.setProperty("webdriver.chrome.driver", "C:\\Users\\88017\\Downloads\\chromedriver_win32 (1)\\chromedriver.exe");
+       WebDriver cdriver=new ChromeDriver();
+       
+       //cdriver.navigate().to("http://www.google.com/");
+       //or
+      cdriver.get("https://app.quantibly.com/login");
+      cdriver.findElement(By.cssSelector("input[type='email']")).sendKeys("mba.ananna@gmail.com");
+      cdriver.findElement(By.cssSelector("input[type='password']")).sendKeys("An1@#$%^");
+      cdriver.findElement(By.cssSelector("button[type='submit']")).click();
+      
+      JavascriptExecutor je=(JavascriptExecutor)cdriver;
+      je.executeScript("window.scrollby(0,350)","");
+      cdriver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/button[1]")).click();
+      
+      cdriver.findElement(By.xpath("//body/div[@id='app']/div[1]/div[2]/div[1]/ul[1]/li[2]")).click();
+      cdriver.findElement(By.xpath("//body/div[@id='app']/div[1]/div[3]/div[1]/div[3]/div[1]/div[1]/div[1]/div[2]/a[1]")).click();
+      
+      Select prefix= new Select(cdriver.findElement(By.xpath("//body/div[@id='app']/div[1]/div[3]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]")));
+      prefix.selectByVisibleText("Ms");
+      cdriver.findElement(By.xpath("//body/div[@id='app']/div[1]/div[3]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/input[1]")).sendKeys("Masoma");
+      cdriver.findElement(By.xpath("//body/div[@id='app']/div[1]/div[3]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/input[1]")).sendKeys("Begum");
+      cdriver.findElement(By.cssSelector("body.text-left:nth-child(2) div.app-admin-wrap.layout-sidebar-large di")).sendKeys("Ananna");
+      Select Gender= new Select(cdriver.findElement(By.xpath("//body/div[@id='app']/div[1]/div[3]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[5]/div[1]/div[1]")));
+      Gender.selectByVisibleText("Female");
+      cdriver.findElement(By.xpath("//body/div[@id='app']/div[1]/div[3]/div[1]/div[3]/div[1]/div[1]/div[2]/div[2]/button[1]")).click();
+    }      
+}
